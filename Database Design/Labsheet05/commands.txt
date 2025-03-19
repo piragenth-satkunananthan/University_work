@@ -1,0 +1,48 @@
+mysql> cls
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'cls' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| vaccinatedstudent  |
+| world              |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use vaccinatedstudent;
+Database changed
+mysql> show tables;
++-----------------------------+
+| Tables_in_vaccinatedstudent |
++-----------------------------+
+| vaccinatedstudentdetails    |
++-----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from vaccinatedstudentdetails;
++------+------------+-----------+------------+------------------------+
+| ID   | First_name | Last_name | DOB        | Address                |
++------+------------+-----------+------------+------------------------+
+|    1 | john       | smith     | 1998-01-19 | Kandy Road, Ampara     |
+|    2 | Franklin   | Loshan    | 1999-06-20 | Berry Hills, Matara    |
+|    3 | Mohamed    | Shan      | 2000-10-26 | 26, Stone Lane, Jaffna |
+|    4 | Ramesh     | Narayan   | 1998-09-05 | Park Road, Kandy       |
++------+------------+-----------+------------+------------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from vaccinatedstudentdetails where id=1;
++------+------------+-----------+------------+--------------------+
+| ID   | First_name | Last_name | DOB        | Address            |
++------+------------+-----------+------------+--------------------+
+|    1 | john       | smith     | 1998-01-19 | Kandy Road, Ampara |
++------+------------+-----------+------------+--------------------+
+1 row in set (0.01 sec)
+
+mysql> ^C
+mysql> quit;
