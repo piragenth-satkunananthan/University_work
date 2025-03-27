@@ -1,0 +1,259 @@
+mysql> create database ICTDepartment
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> create table Student(Stu_id int,Std_Name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> create table Student(Stu_id int,Std_Name varchar(20));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> drop table student;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table Student(Stu_id int,Std_Name varchar(20),Phone int,Email Varchar(40),city varchar(20));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> alter table student add subjets varchar(20);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| Stu_id   | int         | YES  |     | NULL    |       |
+| Std_Name | varchar(20) | YES  |     | NULL    |       |
+| Phone    | int         | YES  |     | NULL    |       |
+| Email    | varchar(40) | YES  |     | NULL    |       |
+| city     | varchar(20) | YES  |     | NULL    |       |
+| subjets  | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> ^C
+mysql> alter table student add Credits int;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into student(std_id,std_name,phone,email,city,subjects,credits) values(1,'perera',77745445,'perera@gmail.com','Gampaha','DBMS',3),(2,'Peter',77234569,'peter@gmail.com','colombo','AI',2),(3,'Hansani',71345464,'hansani@gmail.com','Galle','ML',1),(4,'Mala',77337894,'mala@gmail.com,'jaffna','ADBMS',3),(5,'Kavindu',77789780,'kavindu@yahoo.com','kaluthara','AI',2);
+    '> 
+    '> ^C
+mysql> insert into student(std_id,std_name,phone,email,city,subjects,credits) values(1,'perera',77745445,'perera@gmail.com','Gampaha','DBMS',3),(2,'Peter',77234569,'peter@gmail.com','colombo','AI',2),(3,'Hansani',71345464,'hansani@gmail.com','Galle','ML',1),(4,'Mala',77337894,'mala@gmail.com','jaffna','ADBMS',3),(5,'Kavindu',77789780,'kavindu@yahoo.com','kaluthara','AI',2);
+ERROR 1054 (42S22): Unknown column 'std_id' in 'field list'
+mysql> insert into student(stu_id,std_name,phone,email,city,subjects,credits) values(1,'perera',77745445,'perera@gmail.com','Gampaha','DBMS',3),(2,'Peter',77234569,'peter@gmail.com','colombo','AI',2),(3,'Hansani',71345464,'hansani@gmail.com','Galle','ML',1),(4,'Mala',77337894,'mala@gmail.com','jaffna','ADBMS',3),(5,'Kavindu',77789780,'kavindu@yahoo.com','kaluthara','AI',2);
+ERROR 1054 (42S22): Unknown column 'subjects' in 'field list'
+mysql> insert into student(stu_id,std_name,phone,email,city,subjets,credits) values(1,'perera',77745445,'perera@gmail.com','Gampaha','DBMS',3),(2,'Peter',77234569,'peter@gmail.com','colombo','AI',2),(3,'Hansani',71345464,'hansani@gmail.com','Galle','ML',1),(4,'Mala',77337894,'mala@gmail.com','jaffna','ADBMS',3),(5,'Kavindu',77789780,'kavindu@yahoo.com','kaluthara','AI',2);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++--------+----------+----------+-------------------+-----------+---------+---------+
+| Stu_id | Std_Name | Phone    | Email             | city      | subjets | Credits |
++--------+----------+----------+-------------------+-----------+---------+---------+
+|      1 | perera   | 77745445 | perera@gmail.com  | Gampaha   | DBMS    |       3 |
+|      2 | Peter    | 77234569 | peter@gmail.com   | colombo   | AI      |       2 |
+|      3 | Hansani  | 71345464 | hansani@gmail.com | Galle     | ML      |       1 |
+|      4 | Mala     | 77337894 | mala@gmail.com    | jaffna    | ADBMS   |       3 |
+|      5 | Kavindu  | 77789780 | kavindu@yahoo.com | kaluthara | AI      |       2 |
++--------+----------+----------+-------------------+-----------+---------+---------+
+5 rows in set (0.00 sec)
+
+mysql> alter table student change stu_id std_id int;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++--------+----------+----------+-------------------+-----------+---------+---------+
+| std_id | Std_Name | Phone    | Email             | city      | subjets | Credits |
++--------+----------+----------+-------------------+-----------+---------+---------+
+|      1 | perera   | 77745445 | perera@gmail.com  | Gampaha   | DBMS    |       3 |
+|      2 | Peter    | 77234569 | peter@gmail.com   | colombo   | AI      |       2 |
+|      3 | Hansani  | 71345464 | hansani@gmail.com | Galle     | ML      |       1 |
+|      4 | Mala     | 77337894 | mala@gmail.com    | jaffna    | ADBMS   |       3 |
+|      5 | Kavindu  | 77789780 | kavindu@yahoo.com | kaluthara | AI      |       2 |
++--------+----------+----------+-------------------+-----------+---------+---------+
+5 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> alter table student change subjets subjects;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> alter table student change subjets subjects varchar(20);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++--------+----------+----------+-------------------+-----------+----------+---------+
+| std_id | Std_Name | Phone    | Email             | city      | subjects | Credits |
++--------+----------+----------+-------------------+-----------+----------+---------+
+|      1 | perera   | 77745445 | perera@gmail.com  | Gampaha   | DBMS     |       3 |
+|      2 | Peter    | 77234569 | peter@gmail.com   | colombo   | AI       |       2 |
+|      3 | Hansani  | 71345464 | hansani@gmail.com | Galle     | ML       |       1 |
+|      4 | Mala     | 77337894 | mala@gmail.com    | jaffna    | ADBMS    |       3 |
+|      5 | Kavindu  | 77789780 | kavindu@yahoo.com | kaluthara | AI       |       2 |
++--------+----------+----------+-------------------+-----------+----------+---------+
+5 rows in set (0.00 sec)
+
+mysql> alter table student change city city varchar(50);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| std_id   | int         | YES  |     | NULL    |       |
+| Std_Name | varchar(20) | YES  |     | NULL    |       |
+| Phone    | int         | YES  |     | NULL    |       |
+| Email    | varchar(40) | YES  |     | NULL    |       |
+| city     | varchar(50) | YES  |     | NULL    |       |
+| subjects | varchar(20) | YES  |     | NULL    |       |
+| Credits  | int         | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> alter tabel student change std_name first_name varchar(30);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tabel student change std_name first_name varchar(30)' at line 1
+mysql> alter table student change std_name first_name varchar(30);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table student change first_name varchar(30) first
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar(30) first' at line 1
+mysql> alter table student modify first_name varchar(30) first;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc students;
+ERROR 1146 (42S02): Table 'sakila.students' doesn't exist
+mysql> desc student;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| first_name | varchar(30) | YES  |     | NULL    |       |
+| std_id     | int         | YES  |     | NULL    |       |
+| Phone      | int         | YES  |     | NULL    |       |
+| Email      | varchar(40) | YES  |     | NULL    |       |
+| city       | varchar(50) | YES  |     | NULL    |       |
+| subjects   | varchar(20) | YES  |     | NULL    |       |
+| Credits    | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> alter table student change first_name varchar(30) first
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar(30) first' at line 1
+mysql> alter table student change first_name first_name varchar(30) first;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table student modify first_name stu_name varchar(30) first;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'stu_name varchar(30) first' at line 1
+mysql> alter table student modify rename first_name stu_name varchar(30) first;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'rename first_name stu_name varchar(30) first' at line 1
+mysql> ^C
+mysql> alter table student drop email;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table student rename to Undergraduates;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
++----------------------------+
+| Tables_in_sakila           |
++----------------------------+
+| actor                      |
+| actor_info                 |
+| address                    |
+| category                   |
+| city                       |
+| country                    |
+| customer                   |
+| customer_list              |
+| film                       |
+| film_actor                 |
+| film_category              |
+| film_list                  |
+| film_text                  |
+| inventory                  |
+| language                   |
+| nicer_but_slower_film_list |
+| payment                    |
+| rental                     |
+| sales_by_film_category     |
+| sales_by_store             |
+| staff                      |
+| staff_list                 |
+| store                      |
+| undergraduates             |
++----------------------------+
+24 rows in set (0.00 sec)
+
+mysql> show tables;
++----------------------------+
+| Tables_in_sakila           |
++----------------------------+
+| actor                      |
+| actor_info                 |
+| address                    |
+| category                   |
+| city                       |
+| country                    |
+| customer                   |
+| customer_list              |
+| film                       |
+| film_actor                 |
+| film_category              |
+| film_list                  |
+| film_text                  |
+| inventory                  |
+| language                   |
+| nicer_but_slower_film_list |
+| payment                    |
+| rental                     |
+| sales_by_film_category     |
+| sales_by_store             |
+| staff                      |
+| staff_list                 |
+| store                      |
+| undergraduates             |
++----------------------------+
+24 rows in set (0.00 sec)
+
+mysql> use ictdepartment;
+Database changed
+mysql> show tables
+    -> ;
+Empty set (0.00 sec)
+
+mysql> create table undergraduate.ictdepartment select * from sakila.undergraduates;
+ERROR 1049 (42000): Unknown database 'undergraduate'
+mysql> create table ictdepartment.undergraduates select * from sakila.undergraduates;
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> show * tables;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* tables' at line 1
+mysql> show tables;
++-------------------------+
+| Tables_in_ictdepartment |
++-------------------------+
+| undergraduates          |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from undergraduates;
++------------+--------+----------+-----------+----------+---------+
+| first_name | std_id | Phone    | city      | subjects | Credits |
++------------+--------+----------+-----------+----------+---------+
+| perera     |      1 | 77745445 | Gampaha   | DBMS     |       3 |
+| Peter      |      2 | 77234569 | colombo   | AI       |       2 |
+| Hansani    |      3 | 71345464 | Galle     | ML       |       1 |
+| Mala       |      4 | 77337894 | jaffna    | ADBMS    |       3 |
+| Kavindu    |      5 | 77789780 | kaluthara | AI       |       2 |
++------------+--------+----------+-----------+----------+---------+
+5 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> exit
