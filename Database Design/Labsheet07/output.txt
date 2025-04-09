@@ -1,0 +1,229 @@
+mysql> clear
+mysql> create database CIS11051;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use CIS11051
+Database changed
+mysql> create table Students(int ID,varchar(30),float GPA,varchar(30) Class,varchar(20) Gender);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'int ID,varchar(30),float GPA,varchar(30) Class,varchar(20) Gender)' at line 1
+mysql> create table Students(int ID,varchar(30),float(20,20) GPA,varchar(30) Class,varchar(20) Gender);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'int ID,varchar(30),float(20,20) GPA,varchar(30) Class,varchar(20) Gender)' at line 1
+mysql> create table Students(int ID,varchar(30),decimal(3,2) GPA,varchar(30) Class,varchar(20) Gender);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'int ID,varchar(30),decimal(3,2) GPA,varchar(30) Class,varchar(20) Gender)' at line 1
+mysql> create table Students(int ID,varchar(30)Name ,decimal(3,2) GPA,varchar(30) Class,varchar(20) Gender);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'int ID,varchar(30)Name ,decimal(3,2) GPA,varchar(30) Class,varchar(20) Gender)' at line 1
+mysql> create table Students(int ID,varchar(30) Name ,decimal(3,2) GPA,varchar(30) Class,varchar(20) Gender);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'int ID,varchar(30) Name ,decimal(3,2) GPA,varchar(30) Class,varchar(20) Gender)' at line 1
+mysql> create table Students(ID int,Name varchar(30),GPA decimal(3,2),Class varchar(30),Gender varchar(20));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc students;
++--------+--------------+------+-----+---------+-------+
+| Field  | Type         | Null | Key | Default | Extra |
++--------+--------------+------+-----+---------+-------+
+| ID     | int          | YES  |     | NULL    |       |
+| Name   | varchar(30)  | YES  |     | NULL    |       |
+| GPA    | decimal(3,2) | YES  |     | NULL    |       |
+| Class  | varchar(30)  | YES  |     | NULL    |       |
+| Gender | varchar(20)  | YES  |     | NULL    |       |
++--------+--------------+------+-----+---------+-------+
+5 rows in set (0.04 sec)
+
+mysql> drop table Students;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> create table Students(ID int,Name varchar(30),Total_Marks int,GPA decimal(3,2),Class varchar(30),Gender varchar(20));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into students values((1, 'John Deo', 89, 3.8, 'First', 'Male'),);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> (2, 'Max Ruin', 45, 2.5, 'Second lower', 'Male'),
+    -> (3, 'Arnoid', 72, 3.3, 'Second Upper', 'Female'),
+    -> (4, 'Mary Mike', 67, 3.4, 'Second Upper', 'Female'),
+    -> (5, 'Asruk', 52, 2.8, 'Second Lower', 'Male'),
+    -> (6, 'Tes Qry', 90, 3.82, 'First', 'Female'),
+    -> (7, 'Big John', 40, 2.0, 'Pass', 'Male'),
+    -> (8, 'Alex', 78, 3.6, 'Second Upper', 'Male'),
+    -> (9, 'Alpha', 39, 2.0, 'Pass', 'Female'),
+    -> (10, 'Krish', 82, 3.71, 'First', 'Male'));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '2, 'Max Ruin', 45, 2.5, 'Second lower', 'Male'),
+(3, 'Arnoid', 72, 3.3, 'Second ' at line 1
+mysql> ^C
+mysql> insert into students values((1, 'John Deo', 89, 3.8, 'First', 'Male'), (2, 'Max Ruin', 45, 2.5, 'Second lower', 'Male'), (3, 'Arnoid', 72, 3.3, 'Second Upper', 'Female'),(4, 'Mary Mike', 67, 3.4, 'Second Upper', 'Female'),(5, 'Asruk', 52, 2.8, 'Second Lower', 'Male'),(6, 'Tes Qry', 90, 3.82, 'First', 'Female'),(7, 'Big John', 40, 2.0, 'Pass', 'Male'),(8, 'Alex', 78, 3.6, 'Second Upper', 'Male'),(9, 'Alpha', 39, 2.0, 'Pass', 'Female'),(10, 'Krish', 82, 3.71, 'First', 'Male'));
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into students values(1, 'John Deo', 89, 3.8, 'First', 'Male'), (2, 'Max Ruin', 45, 2.5, 'Second lower', 'Male'), (3, 'Arnoid', 72, 3.3, 'Second Upper', 'Female'),(4, 'Mary Mike', 67, 3.4, 'Second Upper', 'Female'),(5, 'Asruk', 52, 2.8, 'Second Lower', 'Male'),(6, 'Tes Qry', 90, 3.82, 'First', 'Female'),(7, 'Big John', 40, 2.0, 'Pass', 'Male'),(8, 'Alex', 78, 3.6, 'Second Upper', 'Male'),(9, 'Alpha', 39, 2.0, 'Pass', 'Female'),(10, 'Krish', 82, 3.71, 'First', 'Male');
+Query OK, 10 rows affected (0.02 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> select * from students;
++------+-----------+-------------+------+--------------+--------+
+| ID   | Name      | Total_Marks | GPA  | Class        | Gender |
++------+-----------+-------------+------+--------------+--------+
+|    1 | John Deo  |          89 | 3.80 | First        | Male   |
+|    2 | Max Ruin  |          45 | 2.50 | Second lower | Male   |
+|    3 | Arnoid    |          72 | 3.30 | Second Upper | Female |
+|    4 | Mary Mike |          67 | 3.40 | Second Upper | Female |
+|    5 | Asruk     |          52 | 2.80 | Second Lower | Male   |
+|    6 | Tes Qry   |          90 | 3.82 | First        | Female |
+|    7 | Big John  |          40 | 2.00 | Pass         | Male   |
+|    8 | Alex      |          78 | 3.60 | Second Upper | Male   |
+|    9 | Alpha     |          39 | 2.00 | Pass         | Female |
+|   10 | Krish     |          82 | 3.71 | First        | Male   |
++------+-----------+-------------+------+--------------+--------+
+10 rows in set (0.00 sec)
+
+mysql> select total_marks from students where GPA between 3.0 and 3.7;
++-------------+
+| total_marks |
++-------------+
+|          72 |
+|          67 |
+|          78 |
++-------------+
+3 rows in set (0.01 sec)
+
+mysql> select * from students where Class in ('First','Pass');
++------+----------+-------------+------+-------+--------+
+| ID   | Name     | Total_Marks | GPA  | Class | Gender |
++------+----------+-------------+------+-------+--------+
+|    1 | John Deo |          89 | 3.80 | First | Male   |
+|    6 | Tes Qry  |          90 | 3.82 | First | Female |
+|    7 | Big John |          40 | 2.00 | Pass  | Male   |
+|    9 | Alpha    |          39 | 2.00 | Pass  | Female |
+|   10 | Krish    |          82 | 3.71 | First | Male   |
++------+----------+-------------+------+-------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from students where ic in (2,4,6);
+ERROR 1054 (42S22): Unknown column 'ic' in 'where clause'
+mysql> select * from students where id in (2,4,6);
++------+-----------+-------------+------+--------------+--------+
+| ID   | Name      | Total_Marks | GPA  | Class        | Gender |
++------+-----------+-------------+------+--------------+--------+
+|    2 | Max Ruin  |          45 | 2.50 | Second lower | Male   |
+|    4 | Mary Mike |          67 | 3.40 | Second Upper | Female |
+|    6 | Tes Qry   |          90 | 3.82 | First        | Female |
++------+-----------+-------------+------+--------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from students where Name like a%;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%' at line 1
+mysql> select * from students where Name like 'a%';
++------+--------+-------------+------+--------------+--------+
+| ID   | Name   | Total_Marks | GPA  | Class        | Gender |
++------+--------+-------------+------+--------------+--------+
+|    3 | Arnoid |          72 | 3.30 | Second Upper | Female |
+|    5 | Asruk  |          52 | 2.80 | Second Lower | Male   |
+|    8 | Alex   |          78 | 3.60 | Second Upper | Male   |
+|    9 | Alpha  |          39 | 2.00 | Pass         | Female |
++------+--------+-------------+------+--------------+--------+
+4 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> select * from students where Name like 'n&';
+Empty set (0.00 sec)
+
+mysql> select * from students where Name like 'n%';
+Empty set (0.00 sec)
+
+mysql> select * from students where Name like '%n';
++------+----------+-------------+------+--------------+--------+
+| ID   | Name     | Total_Marks | GPA  | Class        | Gender |
++------+----------+-------------+------+--------------+--------+
+|    2 | Max Ruin |          45 | 2.50 | Second lower | Male   |
+|    7 | Big John |          40 | 2.00 | Pass         | Male   |
++------+----------+-------------+------+--------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from students where name like '%oh%';
++------+----------+-------------+------+-------+--------+
+| ID   | Name     | Total_Marks | GPA  | Class | Gender |
++------+----------+-------------+------+-------+--------+
+|    1 | John Deo |          89 | 3.80 | First | Male   |
+|    7 | Big John |          40 | 2.00 | Pass  | Male   |
++------+----------+-------------+------+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select name, gender from students where name like '_____'
+    -> ;
++-------+--------+
+| name  | gender |
++-------+--------+
+| Asruk | Male   |
+| Alpha | Female |
+| Krish | Male   |
++-------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select name, gender from students where name like '____';
++------+--------+
+| name | gender |
++------+--------+
+| Alex | Male   |
++------+--------+
+1 row in set (0.00 sec)
+
+mysql> select id, name from students where name like '_a%';
++------+-----------+
+| id   | name      |
++------+-----------+
+|    2 | Max Ruin  |
+|    4 | Mary Mike |
++------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select id, name from students where name like '___x';
++------+------+
+| id   | name |
++------+------+
+|    8 | Alex |
++------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from  students where gpa>3.5 and class class='second class';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'class='second class'' at line 1
+mysql> select * from  students where gpa>3.5 and class='second class';
+Empty set (0.01 sec)
+
+mysql> select * from  students where gpa>3.5 and class='second upper';
++------+------+-------------+------+--------------+--------+
+| ID   | Name | Total_Marks | GPA  | Class        | Gender |
++------+------+-------------+------+--------------+--------+
+|    8 | Alex |          78 | 3.60 | Second Upper | Male   |
++------+------+-------------+------+--------------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from  students where total_marks>60 and class='second upper';
++------+-----------+-------------+------+--------------+--------+
+| ID   | Name      | Total_Marks | GPA  | Class        | Gender |
++------+-----------+-------------+------+--------------+--------+
+|    3 | Arnoid    |          72 | 3.30 | Second Upper | Female |
+|    4 | Mary Mike |          67 | 3.40 | Second Upper | Female |
+|    8 | Alex      |          78 | 3.60 | Second Upper | Male   |
++------+-----------+-------------+------+--------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from students where gender='male' or gpa<2.5;
++------+----------+-------------+------+--------------+--------+
+| ID   | Name     | Total_Marks | GPA  | Class        | Gender |
++------+----------+-------------+------+--------------+--------+
+|    1 | John Deo |          89 | 3.80 | First        | Male   |
+|    2 | Max Ruin |          45 | 2.50 | Second lower | Male   |
+|    5 | Asruk    |          52 | 2.80 | Second Lower | Male   |
+|    7 | Big John |          40 | 2.00 | Pass         | Male   |
+|    8 | Alex     |          78 | 3.60 | Second Upper | Male   |
+|    9 | Alpha    |          39 | 2.00 | Pass         | Female |
+|   10 | Krish    |          82 | 3.71 | First        | Male   |
++------+----------+-------------+------+--------------+--------+
+7 rows in set (0.00 sec)
+
+mysql> select * from students where class='first' or total_marks>80;
++------+----------+-------------+------+-------+--------+
+| ID   | Name     | Total_Marks | GPA  | Class | Gender |
++------+----------+-------------+------+-------+--------+
+|    1 | John Deo |          89 | 3.80 | First | Male   |
+|    6 | Tes Qry  |          90 | 3.82 | First | Female |
+|   10 | Krish    |          82 | 3.71 | First | Male   |
++------+----------+-------------+------+-------+--------+
+3 rows in set (0.00 sec)
+
