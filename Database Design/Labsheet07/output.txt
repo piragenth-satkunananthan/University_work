@@ -227,3 +227,40 @@ mysql> select * from students where class='first' or total_marks>80;
 +------+----------+-------------+------+-------+--------+
 3 rows in set (0.00 sec)
 
+mysql> create table employees(empid int,fullname varchar(30),department varchar(30),salary int,age int,experience varchar(30),gender varchar(30));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into employees values(101,'alice green','HR',55000,29,'3.5','female'),(102,'bob martin','it',75000,32,'6.0');
+ERROR 1136 (21S01): Column count doesn't match value count at row 2
+mysql> insert into employees values(101,'alice green','HR',55000,29,'3.5','female'),(102,'bob martin','it',75000,32,'6.0','male);
+    '> 
+    '> ^C
+mysql> insert into employees values(101,'alice green','HR',55000,29,'3.5','female'),(102,'bob martin','it',75000,32,'6.0','male'),(103,'Cathy woods','marketing',60000,28,'4.2','female'),(104,'David Lee','IT',72000,35,'7.1','male'),(105,'Eva Stone','Finance',68000,30,'5.8','female'),(106,'Frank Johns','HR',52000,25,2.5,'Male'),(107,'Grace Park','Marketing',58000,3.8,'female'),(108,'Henry bolt','it',80000,40,'10.0','male'),(109,'Isla Ray','Finance',67000,33,'2.9);
+    '> ^C
+mysql> insert into employees values(101,'alice green','HR',55000,29,'3.5','female'),(102,'bob martin','it',75000,32,'6.0','male'),(103,'Cathy woods','marketing',60000,28,'4.2','female'),(104,'David Lee','IT',72000,35,'7.1','male'),(105,'Eva Stone','Finance',68000,30,'5.8','female'),(106,'Frank Johns','HR',52000,25,2.5,'Male'),(107,'Grace Park','Marketing',58000,3.8,'female'),(108,'Henry bolt','it',80000,40,'10.0','male'),(109,'Isla Ray','Finance',67000,33,'6.5','Female'),(110,'Jake Moon','IT',73000,29,'4.9);
+    '> ^C
+mysql> insert into employees values(101,'alice green','HR',55000,29,'3.5','female'),(102,'bob martin','it',75000,32,'6.0','male'),(103,'Cathy woods','marketing',60000,28,'4.2','female'),(104,'David Lee','IT',72000,35,'7.1','male'),(105,'Eva Stone','Finance',68000,30,'5.8','female'),(106,'Frank Johns','HR',52000,25,2.5,'Male'),(107,'Grace Park','Marketing',58000,3.8,'female'),(108,'Henry bolt','it',80000,40,'10.0','male'),(109,'Isla Ray','Finance',67000,33,'6.5','Female'),(110,'Jake Moon','IT',73000,29,'4.9','male');
+ERROR 1136 (21S01): Column count doesn't match value count at row 7
+mysql> insert into employees values(101,'alice green','HR',55000,29,'3.5','female'),(102,'bob martin','it',75000,32,'6.0','male'),(103,'Cathy woods','marketing',60000,28,'4.2','female'),(104,'David Lee','IT',72000,35,'7.1','male'),(105,'Eva Stone','Finance',68000,30,'5.8','female'),(106,'Frank Johns','HR',52000,25,2.5,'Male'),(107,'Grace Park','Marketing',58000,27,3.8,'female'),(108,'Henry bolt','it',80000,40,'10.0','male'),(109,'Isla Ray','Finance',67000,33,'6.5','Female'),(110,'Jake Moon','IT',73000,29,'4.9','male');
+Query OK, 10 rows affected (0.01 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> select * from employees;
++-------+-------------+------------+--------+------+------------+--------+
+| empid | fullname    | department | salary | age  | experience | gender |
++-------+-------------+------------+--------+------+------------+--------+
+|   101 | alice green | HR         |  55000 |   29 | 3.5        | female |
+|   102 | bob martin  | it         |  75000 |   32 | 6.0        | male   |
+|   103 | Cathy woods | marketing  |  60000 |   28 | 4.2        | female |
+|   104 | David Lee   | IT         |  72000 |   35 | 7.1        | male   |
+|   105 | Eva Stone   | Finance    |  68000 |   30 | 5.8        | female |
+|   106 | Frank Johns | HR         |  52000 |   25 | 2.5        | Male   |
+|   107 | Grace Park  | Marketing  |  58000 |   27 | 3.8        | female |
+|   108 | Henry bolt  | it         |  80000 |   40 | 10.0       | male   |
+|   109 | Isla Ray    | Finance    |  67000 |   33 | 6.5        | Female |
+|   110 | Jake Moon   | IT         |  73000 |   29 | 4.9        | male   |
++-------+-------------+------------+--------+------+------------+--------+
+10 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> exit
